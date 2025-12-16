@@ -5,7 +5,7 @@ import { Produto } from '@/models/interfaces';
 
 interface ProdutoCardProps {
     produto: Produto;
-    // Props opcionais para gerir as ações
+ 
     onAddToCart?: (produto: Produto) => void;
     onRemoveFromCart?: (produto: Produto) => void;
 }
@@ -13,7 +13,7 @@ interface ProdutoCardProps {
 export default function ProdutoCard({ produto, onAddToCart, onRemoveFromCart }: ProdutoCardProps) {
     const imagePrefix = 'https://deisishop.pythonanywhere.com';
     const imageUrl = imagePrefix + produto.image;
-
+❤️🤍
     return (
         <article className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full overflow-hidden">
             <div className="relative w-full h-48 bg-gray-50 p-4 flex items-center justify-center border-b border-gray-100">
@@ -65,7 +65,9 @@ export default function ProdutoCard({ produto, onAddToCart, onRemoveFromCart }: 
                             >
                                 Comprar
                             </button>
+                            
                         )}
+                    
                     </div>
                 </div>
             </div>

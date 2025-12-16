@@ -2,7 +2,12 @@ export interface Rating {
     rate: number;
     count: number;
 }
+export interface Pais {
+    name: string
+    area: number
+    population: number
 
+}
 export interface Produto {
     id: number;
     title: string;
