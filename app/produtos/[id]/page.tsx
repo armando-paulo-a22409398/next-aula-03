@@ -3,9 +3,9 @@
 import React, { use } from 'react';
 import useSWR from 'swr';
 import Link from 'next/link';
-// Correção: Alterado para 'Produto' conforme o erro do compilador
+
 import { Produto } from '@/models/interfaces';
-import ProdutoDetalhe from '@/components/ProdutoDetalhe';
+import ProdutoDetalhe from '@/components/ProdutoDetalhe/ProdutoDetalhe';
 
 // O fetcher continua a ser o mesmo de antes
 const fetcher = (url: string) => fetch(url).then((res) => res.json());

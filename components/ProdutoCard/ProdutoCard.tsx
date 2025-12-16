@@ -5,9 +5,12 @@ import { Produto } from '@/models/interfaces';
 
 interface ProdutoCardProps {
     produto: Produto;
+    // Props opcionais para gerir as ações
+    onAddToCart?: (produto: Produto) => void;
+    onRemoveFromCart?: (produto: Produto) => void;
 }
 
-export default function ProdutoCard({ produto }: ProdutoCardProps) {
+export default function ProdutoCard({ produto, onAddToCart, onRemoveFromCart }: ProdutoCardProps) {
     const imagePrefix = 'https://deisishop.pythonanywhere.com';
     const imageUrl = imagePrefix + produto.image;
 
@@ -39,15 +42,29 @@ export default function ProdutoCard({ produto }: ProdutoCardProps) {
                     </span>
                     
                     <div className="flex gap-2">
+                        {/* Link +Info */}
                         <Link href={`/produtos/${produto.id}`}>
                             <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-2 px-3 rounded-lg transition-colors cursor-pointer">
                                 + Info
                             </button>
                         </Link>
                         
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer">
-                            Comprar
-                        </button>
+                        {/* Botão Condicional: Remover (se estiver no carrinho) ou Comprar (se estiver na loja) */}
+                        {onRemoveFromCart ? (
+                            <button 
+                                onClick={() => onRemoveFromCart(produto)}
+                                className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer"
+                            >
+                                Remover
+                            </button>
+                        ) : (
+                            <button 
+                                onClick={() => onAddToCart && onAddToCart(produto)}
+                                className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer"
+                            >
+                                Comprar
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

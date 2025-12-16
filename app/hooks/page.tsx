@@ -1,7 +1,7 @@
 import Contador from "@/components/Contador/page"
 import ContadorPorTecnologia from "@/components/ContadorPorTecnologia/ContadorPorTecnologia"
 import FetchUser from "@/components/FetchUser/FetchUser"
-import FetchUsers from "@/components/FetchUsers/FetchUsers"
+
 import InputEcho from "@/components/InputEcho/InputEcho"
 import Produtos from "@/components/Produtos/Produtos"
 import SeletorTecno from "@/components/SeletorTecno/SeletorTecno"
