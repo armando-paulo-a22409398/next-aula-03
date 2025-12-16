@@ -7,15 +7,14 @@ import Produtos from "@/components/Produtos/Produtos"
 import SeletorTecno from "@/components/SeletorTecno/SeletorTecno"
 import Tarefas from "@/components/Tarefas/Tarefas"
 import Tecnologias from "@/components/Tecnologias/Tecnologias"
-
 export default function HooksPage() {
 
     return (
         <>
-            <section>
-                <h2>Hooks</h2>
-                <div className="bg-blue-300 px-2 py-4 rounded-xl">
-                    <p>
+            <section className="p-4">
+                <h2 className="text-2xl font-bold mb-4">Hooks</h2>
+                <div className="bg-blue-300 px-4 py-4 rounded-xl mb-6">
+                    <p className="mb-2">
                         Hooks são funções React para gerir o comportamento de componentes.
                         Tornam o código mais modular e fácil de entender. 
                         São uma das principais inovações do React.
@@ -23,24 +22,24 @@ export default function HooksPage() {
                     <p>
                         Hooks: <strong><code>useState, useEffect, useSWR, useParams</code></strong>
                     </p>
-                    
                 </div>
             </section>
 
-            <Contador />
-            <ContadorPorTecnologia />
-            
-             <InputEcho /> 
+            <div className="flex flex-col gap-6 p-4">
+                <Contador />
+                
+                {/* CORREÇÃO: Adicionada a prop 'tecnologia' obrigatória */}
+                <div className="flex flex-col items-start gap-2">
+                    <h3 className="font-bold">Contador por Tecnologia:</h3>
+                    <ContadorPorTecnologia tecnologia="React" />
+                </div>
+                
+                <InputEcho /> 
 
-            <SeletorTecno /> 
+                <SeletorTecno /> 
 
-             <Tarefas /> 
-
-            {/* <Tecnologias /> */}
-
-            {/* <FetchUser /> */}
-
-            {/* <FetchUsers /> */}
+                <Tarefas /> 
+            </div>
         </>
     )
 }
