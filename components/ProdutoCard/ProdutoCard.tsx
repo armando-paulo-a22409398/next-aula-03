@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'; // Importar Link
-import { Product } from '@/models/interfaces';
+import Link from 'next/link';
+import { Produto } from '@/models/interfaces';
 
 interface ProdutoCardProps {
-    produto: Product;
+    produto: Produto;
 }
 
 export default function ProdutoCard({ produto }: ProdutoCardProps) {
@@ -39,14 +39,13 @@ export default function ProdutoCard({ produto }: ProdutoCardProps) {
                     </span>
                     
                     <div className="flex gap-2">
-                        {/* Link para a rota dinâmica */}
                         <Link href={`/produtos/${produto.id}`}>
-                            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-2 px-3 rounded-lg transition-colors">
+                            <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-2 px-3 rounded-lg transition-colors cursor-pointer">
                                 + Info
                             </button>
                         </Link>
                         
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm">
+                        <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer">
                             Comprar
                         </button>
                     </div>

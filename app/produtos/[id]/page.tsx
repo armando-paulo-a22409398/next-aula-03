@@ -3,11 +3,11 @@
 import React, { use } from 'react';
 import useSWR from 'swr';
 import Link from 'next/link';
-// Correção: Importar 'Product' em vez de 'Produto' para corresponder à interface e ao uso no useSWR
-import { Product } from '@/models/interfaces';
+// Correção: Alterado para 'Produto' conforme o erro do compilador
+import { Produto } from '@/models/interfaces';
 import ProdutoDetalhe from '@/components/ProdutoDetalhe';
 
-// O fetcher continua a ser o mesmo
+// O fetcher continua a ser o mesmo de antes
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // Interface para receber os parâmetros da rota
@@ -24,8 +24,8 @@ export default function ProdutoPage({ params }: PageProps) {
     const { id } = use(params);
 
     // 2. Usar o ID para fazer o fetch ao endpoint específico (/products/{id})
-    // O tipo genérico <Product> agora corresponde ao import
-    const { data: produto, error, isLoading } = useSWR<Product>(
+    // O tipo genérico agora é <Produto>
+    const { data: produto, error, isLoading } = useSWR<Produto>(
         `https://deisishop.pythonanywhere.com/products/${id}`, 
         fetcher
     );

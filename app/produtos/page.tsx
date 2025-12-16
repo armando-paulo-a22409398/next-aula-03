@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
-import { Product } from '@/models/interfaces';
+import { Produto } from '@/models/interfaces';
 import ProdutoCard from '@/components/ProdutoCard';
 
 // Função fetcher padrão para o SWR
@@ -10,7 +10,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function ProdutosPage() {
     // Fetch de dados da API
-    const { data, error, isLoading } = useSWR<Product[]>(
+    const { data, error, isLoading } = useSWR<Produto[]>(
         'https://deisishop.pythonanywhere.com/products', 
         fetcher
     );
@@ -19,7 +19,7 @@ export default function ProdutosPage() {
     const [search, setSearch] = useState('');
     
     // 2. Estado para guardar a lista filtrada
-    const [filteredData, setFilteredData] = useState<Product[]>([]);
+    const [filteredData, setFilteredData] = useState<Produto[]>([]);
 
     // 3. useEffect para atualizar filteredData quando search ou data mudam
     useEffect(() => {

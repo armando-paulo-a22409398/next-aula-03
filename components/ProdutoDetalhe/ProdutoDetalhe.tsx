@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import { Product } from '@/models/interfaces';
+import { Produto } from '@/models/interfaces';
 
 interface ProdutoDetalheProps {
-    produto: Product;
+    produto: Produto;
 }
 
 export default function ProdutoDetalhe({ produto }: ProdutoDetalheProps) {
