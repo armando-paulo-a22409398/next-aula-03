@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image';
 import { Produto } from '@/models/interfaces';
@@ -8,7 +10,37 @@ interface ProdutoDetalheProps {
 
 export default function ProdutoDetalhe({ produto }: ProdutoDetalheProps) {
     const imagePrefix = 'https://deisishop.pythonanywhere.com';
-    const imageUrl = imagePrefix + produto.image;
+    const imageUrl = produto.image.startsWith('http') 
+        ? produto.image 
+        : imagePrefix + produto.image;
+
+    // Função para adicionar ao carrinho (via localStorage)
+    const handleAddToCart = () => {
+        try {
+            const savedCart = localStorage.getItem('cart');
+            let cart = savedCart ? JSON.parse(savedCart) : [];
+
+            // Converter para novo formato se necessário
+            if (Array.isArray(cart) && cart.length > 0 && !cart[0].quantity) {
+                cart = cart.map((p: any) => ({ product: p, quantity: 1 }));
+            }
+
+            // Verificar se já existe
+            const existingIndex = cart.findIndex((item: any) => item.product.id === produto.id);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ product: produto, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Produto adicionado ao carrinho com sucesso!');
+        } catch (error) {
+            console.error("Erro ao adicionar:", error);
+            alert("Erro ao adicionar produto.");
+        }
+    };
 
     return (
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
@@ -46,13 +78,12 @@ export default function ProdutoDetalhe({ produto }: ProdutoDetalheProps) {
 
                     <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <span className="text-4xl font-bold text-gray-900">
-                            {/* CORREÇÃO: Forçar conversão para Number() */}
                             {Number(produto.price).toFixed(2)} €
                         </span>
                         
                         <button 
                             className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-blue-200 transform hover:-translate-y-0.5 cursor-pointer"
-                            onClick={() => alert('Funcionalidade de compra disponível na lista de produtos!')}
+                            onClick={handleAddToCart}
                         >
                             Adicionar ao Carrinho
                         </button>
