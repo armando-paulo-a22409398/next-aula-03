@@ -12,7 +12,7 @@ interface ProdutoDetalheProps {
 export default function ProdutoDetalhe({ produto }: ProdutoDetalheProps) {
     const router = useRouter();
     const imagePrefix = 'https://deisishop.pythonanywhere.com';
-      const [like, setLikes] = useState('🤍');
+    
     // Verificação de segurança para a imagem
     const imageUrl = produto?.image && produto.image.startsWith('http') 
         ? produto.image 
@@ -98,12 +98,7 @@ export default function ProdutoDetalhe({ produto }: ProdutoDetalheProps) {
                     <p className="text-gray-600 text-lg leading-relaxed mb-8">
                         {produto.description}
                     </p>
-                    <button 
-                                onClick={() => setLikes(like === '🤍' ? '❤️' : '🤍')}
-                                className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer"
-                            >
-                                {like}
-                            </button>
+
                     <div className="mt-auto pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                         <span className="text-4xl font-bold text-gray-900">
                             {Number(produto.price || 0).toFixed(2)} €

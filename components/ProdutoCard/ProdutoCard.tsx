@@ -14,7 +14,7 @@ interface ProdutoCardProps {
 export default function ProdutoCard({ produto, onAddToCart, onRemoveFromCart }: ProdutoCardProps) {
     const imagePrefix = 'https://deisishop.pythonanywhere.com';
     const imageUrl = imagePrefix + produto.image;
-  const [like, setLikes] = useState('🤍');
+ 
     
     return (
         <article className="flex flex-col bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 h-full overflow-hidden">
@@ -51,12 +51,7 @@ export default function ProdutoCard({ produto, onAddToCart, onRemoveFromCart }: 
                                 + Info
                             </button>
                         </Link>
-                            <button 
-                                onClick={() => setLikes(like === '🤍' ? '❤️' : '🤍')}
-                                className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors shadow-sm cursor-pointer"
-                            >
-                                {like}
-                            </button>
+
                         {/* Botão Condicional: Remover (se estiver no carrinho) ou Comprar (se estiver na loja) */}
                         {onRemoveFromCart ? (
                             <button 

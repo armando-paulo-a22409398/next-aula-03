@@ -10,7 +10,6 @@ export default function Header() {
                 <Link href="/hooks" className="hover:underline">Hooks</Link>
                 {/* Adicionado link para Produtos */}
                 <Link href="/produtos" className="hover:underline">Produtos</Link>
-                <Link href="/paises" className="hover:underline">Países</Link>
             </nav>
         </header>
     )
